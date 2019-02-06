@@ -3,20 +3,19 @@ import React from 'react'
 import './App.css'
 import Search from './Search'
 import BooksList from './BooksList'
+import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
-  state = {
-    showSearchPage: false
-  }
 
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <Search/>
-        ) : (
-          <BooksList/>
-        )}
+        <Route exact path='/' render={() => (
+          <BooksList />
+        )} />
+        <Route path='/search' render={() => (
+          <Search />
+        )} />
       </div>
     )
   }
