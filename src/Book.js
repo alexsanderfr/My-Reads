@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 class Book extends React.Component {
     static propTypes = {
-        title: PropTypes.string.isRequired,
-        authors: PropTypes.string.isRequired,
-        backgroundImage: PropTypes.string.isRequired
+        book: PropTypes.array.isRequired
     }
 
     render() {
-        const {title, authors, backgroundImage} = this.props
+        const { book } = this.props
+        const { title, authors, shelf } = book
+        const backgroundImage = book.imageLinks.thumbnail
 
         return (
             <div className="book">
