@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Search from './Search'
-import BooksList from './BooksList'
+import Booklist from './Booklist'
 import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
@@ -19,7 +19,7 @@ class BooksApp extends React.Component {
 
   search = (query) => {
     BooksAPI.search(query).then((data) => {
-    if (data === undefined || data.error === "empty query") {
+      if (data === undefined || data.error === "empty query") {
         this.setState({
           queriedBooks: []
         })
@@ -35,10 +35,14 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <BooksList books={this.state.books} />
+          <Booklist books={this.state.books} />
         )} />
         <Route path='/search' render={() => (
-          <Search books={this.state.queriedBooks} onQueryChange={this.search} />
+          <Search 
+          books={this.state.books} 
+          queriedBooks={this.state.queriedBooks} 
+          onQueryChange={this.search} 
+          />
         )} />
       </div>
     )
