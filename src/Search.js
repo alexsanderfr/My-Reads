@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Book from './Book'
 import Bookshelf from './Bookshelf'
 import PropTypes from 'prop-types'
 
@@ -19,6 +18,18 @@ class Search extends React.Component {
       query: query
     }))
     this.props.onQueryChange(query)
+  }
+
+  getBooksInLibrary = (queriedBooks, books) => {
+    let result = []
+    books.forEach(book => {
+      queriedBooks.forEach (queriedBook => {
+        if (book.id === queriedBook.id) {
+          result.push(book)
+        }
+      })
+    });
+    return result;
   }
 
 
@@ -41,15 +52,15 @@ class Search extends React.Component {
         <div className="search-books-results">
           <Bookshelf
             title='Currently Reading'
-            books={books.filter((book) => book.shelf === "currentlyReading")}
+            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "currentlyReading"))}
           />
           <Bookshelf
             title='Want to Read'
-            books={books.filter((book) => book.shelf === "wantToRead")}
+            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "wantToRead"))}
           />
           <Bookshelf
             title='Read'
-            books={books.filter((book) => book.shelf === "read")}
+            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "read"))}
           />
           <Bookshelf
             title='None'
