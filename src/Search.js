@@ -34,7 +34,7 @@ class Search extends React.Component {
 
 
   render() {
-    const { books, queriedBooks } = this.props
+    const { books, queriedBooks, onShelfChange } = this.props
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -53,18 +53,22 @@ class Search extends React.Component {
           <Bookshelf
             title='Currently Reading'
             books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "currentlyReading"))}
+            onShelfChange={onShelfChange}
           />
           <Bookshelf
             title='Want to Read'
             books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "wantToRead"))}
+            onShelfChange={onShelfChange}
           />
           <Bookshelf
             title='Read'
             books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "read"))}
+            onShelfChange={onShelfChange}
           />
           <Bookshelf
             title='None'
             books={queriedBooks}
+            onShelfChange={onShelfChange}
           />
         </div>
       </div>
