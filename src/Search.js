@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Bookshelf from './Bookshelf'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Bookshelf from './Bookshelf';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   static propTypes = {
@@ -16,8 +16,8 @@ class Search extends React.Component {
   updateQuery = (query) => {
     this.setState(() => ({
       query: query
-    }))
-    this.props.onQueryChange(query)
+    }));
+    this.props.onQueryChange(query);
   }
 
   getBooksInLibrary = (queriedBooks, books) => {
@@ -34,7 +34,7 @@ class Search extends React.Component {
 
 
   render() {
-    const { books, queriedBooks, onShelfChange } = this.props
+    const { books, queriedBooks, onShelfChange } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -72,8 +72,8 @@ class Search extends React.Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Search
+export default Search;

@@ -1,6 +1,6 @@
-import React from 'react'
-import Book from './Book'
-import PropTypes from 'prop-types'
+import React from 'react';
+import Book from './Book';
+import PropTypes from 'prop-types';
 
 class Bookshelf extends React.Component {
     static propTypes = {
@@ -26,8 +26,8 @@ class Bookshelf extends React.Component {
                                 </ol>
                             </div>
                         </div>
-        )
+        );
     }
 }
 
-export default Bookshelf
+export default Bookshelf;

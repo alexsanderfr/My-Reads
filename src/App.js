@@ -12,13 +12,13 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    this.getAll()
+    this.getAll();
   }
 
   getAll = () => {
     BooksAPI.getAll().then((books) => this.setState({
       books: books
-    }))
+    }));
   }
 
   search = (query) => {
@@ -26,18 +26,18 @@ class BooksApp extends React.Component {
       if (data === undefined || data.error === "empty query") {
         this.setState({
           queriedBooks: []
-        })
+        });
       } else {
         this.setState({
           queriedBooks: data
-        })
+        });
       }
-    })
+    });
   }
 
   update = (book, shelf) => {
     BooksAPI.update(book, shelf).then((data) => {
-      this.getAll()
+      this.getAll();
     })
   }
 
@@ -59,8 +59,8 @@ class BooksApp extends React.Component {
           />
         )} />
       </div>
-    )
+    );
   }
 }
 
-export default BooksApp
+export default BooksApp;

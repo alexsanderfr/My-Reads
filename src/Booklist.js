@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Bookshelf from './Bookshelf'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Bookshelf from './Bookshelf';
+import PropTypes from 'prop-types';
 
 class Booklist extends React.Component {
     static propTypes = {
@@ -40,8 +40,8 @@ class Booklist extends React.Component {
                     </Link>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Booklist
+export default Booklist;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 class Book extends React.Component {
@@ -7,15 +7,15 @@ class Book extends React.Component {
     }
 
     handleChange = (event) => {
-        this.props.onShelfChange(this.props.book, event.target.value)
+        this.props.onShelfChange(this.props.book, event.target.value);
     }
 
     render() {
-        const { book } = this.props
-        const { title, authors } = book
-        let backgroundImage = ''
+        const { book } = this.props;
+        const { title, authors } = book;
+        let backgroundImage = '';
         if (book.imageLinks !== undefined) {
-            backgroundImage = book.imageLinks.thumbnail
+            backgroundImage = book.imageLinks.thumbnail;
         }
 
 
@@ -36,8 +36,8 @@ class Book extends React.Component {
                 <div className="book-title">{title}</div>
                 <div className="book-authors">{authors}</div>
             </div>
-        )
+        );
     }
 }
 
-export default Book
+export default Book;
