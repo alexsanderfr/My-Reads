@@ -17,14 +17,14 @@ class Book extends React.Component {
         if (book.imageLinks !== undefined) {
             backgroundImage = book.imageLinks.thumbnail;
         }
-
+        let shelf = book.shelf === undefined ? "none" : book.shelf;
 
         return (
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url("${backgroundImage}"` }}></div>
                     <div className="book-shelf-changer">
-                        <select onChange={this.handleChange} value="move">
+                        <select onChange={this.handleChange} value={shelf}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

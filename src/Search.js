@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Bookshelf from './Bookshelf';
+import Book from './Book';
 import PropTypes from 'prop-types';
 
 class Search extends React.Component {
@@ -14,27 +14,12 @@ class Search extends React.Component {
   }
 
   updateQuery = (query) => {
-    this.setState(() => ({
-      query: query
-    }));
+    this.setState({ query });
     this.props.onQueryChange(query);
   }
 
-  getBooksInLibrary = (queriedBooks, books) => {
-    let result = []
-    books.forEach(book => {
-      queriedBooks.forEach (queriedBook => {
-        if (book.id === queriedBook.id) {
-          result.push(book)
-        }
-      })
-    });
-    return result;
-  }
-
-
   render() {
-    const { books, queriedBooks, onShelfChange } = this.props;
+    const { queriedBooks, onShelfChange } = this.props;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -50,26 +35,16 @@ class Search extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <Bookshelf
-            title='Currently Reading'
-            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "currentlyReading"))}
-            onShelfChange={onShelfChange}
-          />
-          <Bookshelf
-            title='Want to Read'
-            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "wantToRead"))}
-            onShelfChange={onShelfChange}
-          />
-          <Bookshelf
-            title='Read'
-            books={this.getBooksInLibrary(queriedBooks, books.filter((book) => book.shelf === "read"))}
-            onShelfChange={onShelfChange}
-          />
-          <Bookshelf
-            title='None'
-            books={queriedBooks}
-            onShelfChange={onShelfChange}
-          />
+          <ol className="books-grid">
+            {queriedBooks.map((book) => (
+              <li key={book.id}>
+                <Book
+                  book={book}
+                  onShelfChange={onShelfChange}
+                />
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     );

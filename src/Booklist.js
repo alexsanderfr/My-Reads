@@ -9,7 +9,7 @@ class Booklist extends React.Component {
     }
 
     render() {
-        const { books, onShelfChange} = this.props;
+        const { books, onShelfChange } = this.props;
         return (
             <div className="list-books">
                 <div className="list-books-title">

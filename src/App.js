@@ -41,6 +41,23 @@ class BooksApp extends React.Component {
     })
   }
 
+  getBooksInLibrary = (queriedBooks, books) => {
+    let results = [];
+    queriedBooks.forEach(queriedBook => {
+      let bookAdded = false;
+      books.forEach(book => {
+        if (!bookAdded && book.id === queriedBook.id) {
+          results.push(book)
+          bookAdded = true;
+        }
+      })
+      if (!bookAdded) {
+        results.push(queriedBook);
+      }
+    });
+    return results;
+  }
+
   render() {
     return (
       <div className="app">
@@ -52,8 +69,7 @@ class BooksApp extends React.Component {
         )} />
         <Route path='/search' render={() => (
           <Search
-            books={this.state.books}
-            queriedBooks={this.state.queriedBooks}
+            queriedBooks={this.getBooksInLibrary(this.state.queriedBooks, this.state.books)}
             onQueryChange={this.search}
             onShelfChange={this.update}
           />
