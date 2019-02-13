@@ -10,12 +10,16 @@ class Search extends React.Component {
   }
 
   state = {
-    query: ''
+    query: ""
   }
 
   updateQuery = (query) => {
     this.setState({ query });
     this.props.onQueryChange(query);
+  }
+
+  componentDidMount() {
+    this.props.onQueryChange(this.state.query);
   }
 
   render() {

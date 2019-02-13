@@ -23,7 +23,7 @@ class BooksApp extends React.Component {
 
   search = (query) => {
     BooksAPI.search(query).then((data) => {
-      if (data === undefined || data.error === "empty query") {
+      if (data === undefined || data.error !== undefined) {
         this.setState({
           queriedBooks: []
         });
