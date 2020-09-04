@@ -1,5 +1,5 @@
 # MyReads
-This is the My Reads app for Udacity's React Developer Nanodegree
+Book management app
 
 ### Prerequisites
 
