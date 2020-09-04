@@ -1,5 +1,5 @@
 # MyReads
-Book management app
+Book management web app
 
 ### Prerequisites
 
